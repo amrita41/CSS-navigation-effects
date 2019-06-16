@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
+//GENERAL RULES
+body {
+  margin: 0;
+  background: #eee;
+  font-family: "Montserrat";
+}
+header{
+  text-align: center;
+  margin: 4em 0;
+  p:first-of-type{
+    color:#888;
+  }
+  a{
+    text-decoration: none;
+    color:rgb(81, 98, 253);
+    font-weight: bold;
+  }
+}
+nav {
+  background: #222;
+  ul{
+    margin:0; padding:4em;
+    list-style: none;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+    position: relative;
+    &::before{
+      content:attr(id);
+      position: absolute;
+      left:0; bottom:0;
+      color:rgba(#000,.3);
+      margin:1em 1em 0;
+      font-weight: bold;
+      font-size: 3em;
+    }
+    li{
+      a{
+        display: block;
+        text-decoration: none;
+        padding:0 1em;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.2em;
+        transition: all .5s ease;
+        position: relative;
+        &::after, &::before{
+          transition: all .5s ease;
+        }
+      }
+    }
+  }
+}
+
+//NAVIGATION #1
+ul#nav1{
+  background: rgb(141, 28, 28);
+  a{
+    color:darken(rgb(141, 28, 28),30%);
+    text-shadow: 1px 1px 0 rgba(#fff,.05);
+    transform: perspective(1px) translateZ(0); 
+    &::before{
+      content:"";
+      display: block;
+      width:2em; height:2em;
+      border:4px solid darken(rgb(141, 28, 28),30%);
+      box-shadow: 0 0 0 3px rgb(141, 28, 28), 0 0 0 4px darken(rgb(141, 28, 28),30%);
+      border-radius: 50%;
+      position: absolute;
+      z-index:-1;
+      left:50%; top:50%;
+      transform: translate(-50%,-50%) scale(.6);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    &:hover{
+      color:#fff;
+      &::before{
+        opacity: .3;
+        transform: translate(-50%,-50%) scale(1.2);
+      }
+    }
+  }
+}
+
+//NAVIGATION #2
+ul#nav2{
+  background: rgb(28, 65, 143);
+  a{
+    color:darken(rgb(28, 65, 143),20%);
+    text-shadow: 1px 1px 0 lighten(rgb(28, 65, 143),10%);
+    overflow: hidden;
+    span{
+      display: block;
+      transition: all .5s ease;
+      &::after{
+        content: attr(data-hover);
+        color:#fff;
+        display: block;
+        position: absolute;
+        left:0; right:0; top:0; bottom:0;
+        text-align: center;
+        transform: translateY(100%);
+      }
+    }
+    &:hover{
+      color:transparent;
+      span{
+        transform: translateY(-100%);
+    
+      }
+    }
+  }
+}
+
+//NAVIGATION #3
+ul#nav3{
+  background: rgb(10, 146, 44);
+  a{
+    color:transparent;
+    overflow: hidden;
+    &::before, &::after{
+      content:attr(data-hover);
+      position: absolute;
+      left:0; right:0;
+      overflow: hidden;
+      color:#222;
+      text-align: center;
+    }
+    &::before{
+      top:0; bottom:50%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    &::after{
+      top:50%; bottom:0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    &:hover{
+      color:#fff;
+      &::before,&::after{
+        color:transparent;
+      }
+      &::before{
+        transform: translateY(-100%);
+      }
+      &::after{
+        transform: translateY(100%);
+      }
+    }
+  }
+}
+
+//NAVIGATION #4
+ul#nav4{
+  background: #eee;
+  a{
+    color:#666;
+    &::after{
+      content:"";
+      display: block;
+      margin:1em auto 0;
+      opacity: 0;
+      width:0; height:2px;
+      background: #222;
+      transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    &:hover{
+      color:#222;
+      &::after{
+        width: 100%;
+        opacity: .75;
+      }
+    }
+  }
+}
+
+//NAVIGATION #5
+ul#nav5{
+  background: rgb(218, 116, 0);
+  a{
+    color:darken(rgb(218, 116, 0),30%);
+    &::before{
+      content:attr(data-hover);
+      padding:0;
+      display: block;
+      position: absolute;
+      left:1em; top:0;
+      color:#fff;
+      max-width:0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &:hover{
+      &::before{
+        max-width:100%;
+      }
+    }
+  }
+}
+
+//NAVIGATION #6
+ul#nav6{
+  background:rgb(117, 8, 121);
+  a{
+    color:darken(rgb(117, 8, 121),30%);
+    &::before{
+      content:attr(data-hover);
+      position: absolute;
+      left:0; right:0; top:0; left:0;
+      color:#fff;
+      text-align: center;
+      transform: scale(1.5);
+      opacity: 0;
+    }
+    &:hover{
+      &::before{
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//NAVIGATION #7
+ul#nav7{
+  a{
+    color:#fff;
+    &::before{
+      content: attr(data-hover);
+      display: block;
+      position: absolute;
+      bottom:0; top:0; right:0; left:0;
+      text-align: center;
+      color:salmon;
+      white-space: nowrap;
+      //transform-origin: right top;
+      transform: rotate(180deg) translateY(-100%);
+      opacity: 0;
+    }
+    &:hover{
+      transform-origin: center bottom;
+      transform: rotate(-180deg);
+      color:transparent;
+      &::before{
+        opacity: 1;
+        transform: rotate(180deg) translateY(-100%);
+      }
+    }
+  }
+}
+
+//NAVIGATION #8
+ul#nav8{
+  background: rgb(44, 63, 175);
+  a{
+    color:#ddd;
+    &::before{
+      content: attr(data-hover);
+      position: absolute;
+      left:0; right:0; top:0; bottom:0;
+      text-align: center;
+      transform-origin: right bottom;
+      transform: rotate(15deg) scale(1.5);
+      color:rgb(233, 229, 2);
+      opacity: 0;
+    }
+    &:hover{
+      color: transparent;
+      &::before{
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//NAVIGATION #9
+@keyframes rotation{
+  to{
+    transform:rotate(-45deg) translateY(-20%) translateX(20%);
+  }
+}
+ul#nav9{
+  background: linear-gradient(to top,  darken(#cf0404,10%) 0%,#cf0404 100%);
+  a{
+    color:rgb(228, 133, 133);
+    transform: perspective(1px) translateZ(0);
+    &::before{
+      content:"";
+      display: block;
+      margin:0 auto 1em;
+      width:10px; height:10px;
+      border-left: 3px solid darken(#cf0404,20%);
+      border-bottom: 3px solid darken(#cf0404,20%);
+      transform: rotate(-45deg) translateY(-100%) translateX(100%);
+      opacity: 0;
+    }
+    &::after{
+      content: attr(data-hover);
+      display: block;
+      position: absolute;
+      left:50%; margin-top: .5em;
+      transform: translateX(-50%) translateY(50%);
+      opacity: 0;
+      z-index: -1;
+      color:darken(#cf0404,20%);
+      white-space: nowrap;
+      font-family: serif;
+      text-transform: capitalize;
+      font-style: italic;
+      font-size: 1.2em;
+    }
+    &:hover{
+      color: #fff;
+      &::after{
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      &::before{
+        opacity: 1;
+        animation: rotation .35s ease infinite alternate;
+      }
+    }
+  }
+}
